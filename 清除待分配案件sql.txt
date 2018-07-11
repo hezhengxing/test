@@ -1,0 +1,19 @@
+delete from case_info_distributed where batch_number='20180118077';
+
+delete from case_info_exception where batch_number='20180118077';
+
+delete from personal where id not in (select personal_id from case_info);
+
+delete from personal_address where personal_id not in (select id from personal);
+
+delete from personal_bank where personal_id not in (select id from personal);
+
+delete from personal_car where personal_id not in (select id from personal);
+
+delete from personal_contact where personal_id not in (select id from personal);
+
+delete from personal_job where personal_id not in (select id from personal);
+
+delete from product where id not in (select product_id from case_info);
+
+delete from product_series where id not in (select series_id from product);
