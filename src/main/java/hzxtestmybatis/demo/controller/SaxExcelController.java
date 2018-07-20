@@ -33,8 +33,9 @@ public class SaxExcelController {
         InputStream inputStream = null;
         InputStream inputStream1 = null;
         byte[] ba = null;
+        FileInputStream fileInputStream = null;
         try {
-            FileInputStream fileInputStream = new FileInputStream("D:\\test.xlsx");
+            fileInputStream = new FileInputStream("D:\\test.xlsx");
             int size = fileInputStream.available();
             ba = new byte[size];
             fileInputStream.read(ba);
@@ -45,6 +46,7 @@ public class SaxExcelController {
         }
         inputStream = new ByteArrayInputStream(ba);
         try {
+            //取得一个文件的读写权限
             OPCPackage opcPackage = OPCPackage.open(inputStream);
             XSSFReader xssfReader = new XSSFReader(opcPackage);
 
